@@ -6,6 +6,12 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -14,8 +20,13 @@ public class Student implements Serializable
 	@Id
 	@GeneratedValue
 	private Long id;
+	@NotEmpty
+	@Size(min = 2,max = 10,message = "please enter the name")
 	private String name;
+	@DateTimeFormat(pattern="yyyy-mm-dd")
 	private Date dateBirth;
+	@NotEmpty
+	@Email
 	private String email;
 	private String photo;
 	

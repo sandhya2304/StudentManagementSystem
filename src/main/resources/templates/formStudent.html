@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"  >
+<head>
+  <title> Student Form</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" /> 
+
+<link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}" /> 
+</head>
+<body>
+ 
+   <div class="panel panel-default col-md-6 col-xs-12 spacer col-md-offset-3" >
+     <div class="panel-heading " >Save Student</div>
+     <div class="panel-body">
+       <form th:action="@{saveStudent}" method="post" th:object="${student}"  enctype="multipart/form-data">
+         <div class="form-group">
+           <label class="control-label">Name:</label>
+           <input type="text" th:field="*{name}" class="form-control" />
+           <span class="text-danger" th:errors="*{name}"></span>
+         </div>
+          <div class="form-group">
+           <label class="control-label">Email:</label>
+           <input type="text" th:field="*{email}" class="form-control" />
+          <span class="text-danger" th:errors="*{email}"></span>
+         </div>
+          <div class="form-group">
+           <label class="control-label">Date Of Birth:</label>
+           <input type="date" th:field="*{dateBirth}" class="form-control" />
+           <span class="text-danger" th:errors="*{dateBirth}"></span>
+         </div>
+          <div class="form-group">
+           <label class="control-label">Photo:</label>
+           <input type="file" name="picture"  class="form-control" />
+            <span class="text-danger" th:errors="*{photo}"></span>
+         </div>
+         <div>
+           <button type="submit" class="btn btn-primary">SAVE STUDENT </button>
+         </div>
+       
+       
+       </form>
+    
+     </div>
+     
+     
+     
+   </div>
+
+
+
+</body>
+</html>
