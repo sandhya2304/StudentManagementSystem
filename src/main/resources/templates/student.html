@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org"  >
+<html  xmlns:th="http://www.thymeleaf.org" 
+           xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+                layout:decorator="template">
 <head>
   <title>Student</title>
   <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" /> 
 
 <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}" /> 
 </head>
-<body>
-<div class="container spacer">
+<body layout:fragment="content">
+<div class="container spacer" >
    <a th:href="@{form}">Save Student</a>
 </div>
 <div class="container spacer" align="center">
@@ -32,8 +34,18 @@
          <td th:text="${s.name}"> </td>
          <td th:text="${s.email}"> </td>
          <td th:text="${s.dateBirth}"></td>
-         <td th:text="${s.photo}"> </td>
-         <td><a href="">Edit </a> &nbsp; <a href="">Delete</a></td>
+         <td> 
+          
+            <img class="img-circle" th:src="@{getImg(id=${s.id})}" width="100" height="100" />
+         
+         </td>
+         <td>
+         
+         <a onClick="return confirm('are you sure??')" th:href="@{delete(id=${s.id})}">Delete </a>
+         
+          &nbsp; 
+          
+          <a th:href="@{edit(id=${s.id})}">Edit</a></td>
       </tr >
       </tbody>
     </table>
